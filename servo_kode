@@ -1,0 +1,30 @@
+#include <LiquidCrystal.h>
+#include <Servo.h>
+
+LiquidCrystal lcd(6, 7, 8, 9, 10, 11);
+Servo servo;
+
+int pin_servo = 5;
+int pot_in = A0;
+int degr;
+
+void setup() {
+pinMode(pot_in, INPUT);
+lcd.begin(16, 2);
+Serial.begin(9600);
+servo.attach(pin_servo);
+
+
+}
+void loop() {
+degr = analogRead(pot_in);//0 - 1023
+degr = map(degr, 0, 1023, 0, 180);
+Serial.println(degr);
+servo.write(degr);
+lcd.setCursor(0, 0);
+lcd.print("Servo: ");
+lcd.setCursor(0, 1);
+lcd.print(degr);
+lcd.print("          ");
+
+}
