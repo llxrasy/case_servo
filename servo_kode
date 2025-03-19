@@ -13,7 +13,7 @@ pinMode(pot_in, INPUT);
 lcd.begin(16, 2);
 Serial.begin(9600);
 servo.attach(pin_servo);
-
+//servo.write(90); 
 
 }
 void loop() {
